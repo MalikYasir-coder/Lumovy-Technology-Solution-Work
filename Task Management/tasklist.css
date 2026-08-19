@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, Arial, sans-serif;
+  color: #000;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 30px 0 15px;
+}
+
+.subtitle {
+  font-size: 17px;
+  margin: 0 0 25px;
+}
+
+label {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+#addBtn {
+  background: #007aff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#addBtn:hover {
+  background: #005ecb;
+}
+
+#totalTasks {
+  font-size: 17px;
+  margin: 0;
+}
+
+#emptyMsg {
+  font-size: 17px;
+  margin: 0;
+}
+
+ul#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+ul#taskList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  font-size: 15px;
+}
+ul#taskList li.completed {
+  text-decoration: line-through;
+  color: #999;
+}

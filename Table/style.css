@@ -1,0 +1,68 @@
+body {
+    background-color:white;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+}
+
+table {
+    margin: 40px auto;
+    align-items: center;
+    border-collapse: collapse;
+    width: 70%;
+    text-align: left;
+    border: #e0e0e0 2px solid;
+    border-radius: 15px;
+    table-layout: fixed;
+}
+#table-head {
+    background-color: black;
+    color: white;
+    height: 70px;
+}
+
+.highlight {
+    background-color: #e0e0e0;
+    height: 70px;
+}
+
+.highlight1 {
+    height: 70px;
+}
+.active{
+    background-color: green;
+    color:greenyellow;
+    padding: 5px;
+    border-radius: 5px;
+}
+.pending{
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.inactive{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.btnedit{
+    background-color: white;
+    border: 1px solid blue;
+    color: blue;
+    width: 70px;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btndelete{
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    width: 70px;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
