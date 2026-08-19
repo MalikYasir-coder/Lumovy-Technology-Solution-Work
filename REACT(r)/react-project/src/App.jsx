@@ -10,7 +10,8 @@ function App() {
       <Navbar />
       <Main />
       <TaskForm />
-      <Footer />
+      {/* <Footer /> */}
+      <Footer  year={2026} company="Lumovy Technology Solutions" />
     </div>
   );
 }

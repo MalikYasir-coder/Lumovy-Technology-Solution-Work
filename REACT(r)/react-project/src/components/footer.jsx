@@ -1,7 +1,7 @@
-function Footer() {
+function Footer({year,company}) {
   return (
     <footer>
-      <p>© 2024 My Website. All rights reserved.</p>
+      <p>© {year} {company}. All rights reserved.</p>
     </footer>
   );
 }
