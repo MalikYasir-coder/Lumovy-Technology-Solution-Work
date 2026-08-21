@@ -1,11 +1,11 @@
-function Navbar() {
+function Navbar({ title, menuItems }) {
   return (
     <nav>
-      <h1>My Navbar</h1>
+      <h1>{title}</h1>
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
+       {menuItems.map((item,index)=>(
+        <li key={index}>{item}</li>
+       ))}
       </ul>
     </nav>
   );
