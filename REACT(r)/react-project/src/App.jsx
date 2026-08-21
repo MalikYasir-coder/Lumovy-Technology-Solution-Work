@@ -9,6 +9,7 @@ import TaskForm from "./components/Taskform";
 import './components/Taskform.css';
 
 function App() {
+  const [input,setinput]=useState("");
   const [tasks, setTasks] = useState([
     { id: 1, name: "Company website redesign", status: "Backlog", priority: "Low" },
     { id: 2, name: "Mobile app login prototype", status: "Backlog", priority: "Medium" },

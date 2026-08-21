@@ -1,4 +1,4 @@
-function Main({ title, tasks }) {
+function Main({ title, tasks , onInputChange }) {
   const columns = ["Backlog", "In Progress", "Review", "Complete"];
 
   return (

@@ -1,6 +1,9 @@
 import { useState } from 'react';
+function handleInput(inputvalues) {
+setinput(inputvalues);
+}
 
-function TaskForm({ onAddTask }) {
+function TaskForm({ onAddTask, onInputChange }) {
   const [taskText, setTaskText] = useState("");
 
   function handleSubmit(e) {
