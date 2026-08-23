@@ -17,12 +17,15 @@ function App() {
     { id: 4, name: "Dashboard layout design", status: "Review", priority: "Low" },
     { id: 5, name: "Review client spec document", status: "Complete", priority: "Low" }
   ]);
+  function handleInput(inputvalues) {
+    setinput(inputvalues);
+  }
 
   function addTask(taskName) {
     const newTask = {
       id: Date.now(),
       name: taskName,
-      status: "Backlog",
+      status: "In Progress",
       priority: "Low"
     };
     setTasks([...tasks, newTask]);
@@ -36,7 +39,7 @@ function App() {
 
       <Main title="Tasks Board" tasks={tasks} />
 
-      <TaskForm onAddTask={addTask} />
+      <TaskForm onAddTask={addTask} onInputChange={handleInput} />
 
       {/* <Footer /> */}
       <Footer year={2026} company="Lumovy Technology Solutions" />

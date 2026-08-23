@@ -1,6 +1,19 @@
-footer{
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+footer {
+  background-color: var(--bg-secondary, #ffffff);
+  color: var(--text-secondary, #5c6470);
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color, #e3e6eb);
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--accent-primary, #3b6ef6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--accent-hover, #2f5ad9);
+  text-decoration: underline;
 }

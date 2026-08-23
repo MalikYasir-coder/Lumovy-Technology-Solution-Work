@@ -1,51 +1,60 @@
 main {
   min-height: 80vh;
   padding: 40px;
-  background-color: #f4f6fb;
+  background-color: #f4f5f8;
 }
 
 main h1 {
   text-align: center;
-  color: #2b2b45;
+  color: var(--text-h);
   margin-bottom: 30px;
 }
 
 .board {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
-  overflow-x: auto;
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .column {
   background-color: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px;
   width: 240px;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow);
 }
 
 .column h2 {
   font-size: 15px;
-  color: #2b2b45;
+  color: var(--text-h);
   margin-bottom: 15px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid var(--border);
 }
 
 .task-card {
-  background-color: #fafbff;
+  background-color: #f4f5f8;
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 14px;
   margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--accent-border);
+  transform: translateY(-1px);
 }
 
 .task-card p {
   font-size: 14px;
-  color: #333;
+  color: var(--text);
   margin: 8px 0 0 0;
 }
 
@@ -59,16 +68,16 @@ main h1 {
 }
 
 .priority.low {
-  background-color: #d3f9d8;
-  color: #2b8a3e;
+  background-color: rgba(34, 160, 107, 0.14);
+  color: #1a8a5c;
 }
 
 .priority.medium {
-  background-color: #fff3bf;
-  color: #e67700;
+  background-color: rgba(232, 161, 60, 0.16);
+  color: #c9770a;
 }
 
 .priority.high {
-  background-color: #ffe3e3;
-  color: #c92a2a;
+  background-color: rgba(229, 72, 77, 0.14);
+  color: #d13539;
 }
