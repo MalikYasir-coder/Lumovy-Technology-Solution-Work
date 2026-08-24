@@ -26,6 +26,13 @@ function App() {
     };
     setTasks([...tasks, newTask]);
   }
+  function updateTask(taskId, updates) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, ...updates } : task
+      )
+    );
+  }
 
   return (
     <div>
