@@ -9,7 +9,6 @@ import TaskForm from "./components/Taskform";
 import './components/Taskform.css';
 
 function App() {
-  const [input,setinput]=useState("");
   const [tasks, setTasks] = useState([
     { id: 1, name: "Company website redesign", status: "Backlog", priority: "Low" },
     { id: 2, name: "Mobile app login prototype", status: "Backlog", priority: "Medium" },
@@ -17,15 +16,12 @@ function App() {
     { id: 4, name: "Dashboard layout design", status: "Review", priority: "Low" },
     { id: 5, name: "Review client spec document", status: "Complete", priority: "Low" }
   ]);
-  function handleInput(inputvalues) {
-    setinput(inputvalues);
-  }
 
-  function addTask(taskName) {
+  function addTask(Taskname) {
     const newTask = {
       id: Date.now(),
-      name: taskName,
-      status: "In Progress",
+      name: Taskname,
+      status: "Backlog",
       priority: "Low"
     };
     setTasks([...tasks, newTask]);
@@ -33,17 +29,12 @@ function App() {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <Navbar title="TaskBar Manager" menuItems={["Home", "About", "Contact"]} />
-      {/* <Main title="Our Achievements" tasks={["100+ Projects Completed", "5+ Years of Experience"]} /> */}
-
       <Main title="Tasks Board" tasks={tasks} />
-
-      <TaskForm onAddTask={addTask} onInputChange={handleInput} />
-
-      {/* <Footer /> */}
+      <TaskForm onAddTask={addTask} />
       <Footer year={2026} company="Lumovy Technology Solutions" />
     </div>
   );
 }
+
 export default App;
