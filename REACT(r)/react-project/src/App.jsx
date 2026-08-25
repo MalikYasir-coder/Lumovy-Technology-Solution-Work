@@ -37,7 +37,7 @@ function App() {
   return (
     <div>
       <Navbar title="TaskBar Manager" menuItems={["Home", "About", "Contact"]} />
-      <Main title="Tasks Board" tasks={tasks} />
+      <Main title="Tasks Board" tasks={tasks} onUpdateTask={updateTask} />
       <TaskForm onAddTask={addTask} />
       <Footer year={2026} company="Lumovy Technology Solutions" />
     </div>

@@ -1,5 +1,13 @@
-function Main({ title, tasks}) {
+function Main({ title, tasks, onUpdateTask }) {
   const columns = ["Backlog", "In Progress", "Review", "Complete"];
+
+  function moveToNext(task) {
+    const currentIndex = columns.indexOf(task.status);
+    const nextStatus = columns[currentIndex + 1];
+    if (nextStatus) {
+      onUpdateTask(task.id, { status: nextStatus });
+    }
+  }
 
   return (
     <main>
@@ -16,6 +24,7 @@ function Main({ title, tasks}) {
                     {task.priority} Priority
                   </span>
                   <p>{task.name}</p>
+                  <button onClick={() => moveToNext(task)}>Move →</button>
                 </div>
               ))}
           </div>
