@@ -1,4 +1,4 @@
-import { useState,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/header';
 import NewTask from './components/NewTask';
 
@@ -6,25 +6,16 @@ import './components/NewTask.css';
 import './components/header.css';
 
 function App() {
-
-  // Saare tasks
-  const [task, setTask] = useState([]);
- 
-useEffect(() => {
+const [task, setTask] = useState(() => {
   const savedTasks = localStorage.getItem("tasks");
 
-  if (savedTasks) {
-    setTask(JSON.parse(savedTasks));
-  }
-}, []);
+  return savedTasks ? JSON.parse(savedTasks) : [];
+});
 
 useEffect(() => {
-  if (task.length > 0) {
-    localStorage.setItem("tasks", JSON.stringify(task));
-  }
+  localStorage.setItem("tasks", JSON.stringify(task));
 }, [task]);
 
- 
 
   // Add task form ki values
   const [title, setTitle] = useState("");
@@ -71,19 +62,19 @@ useEffect(() => {
       task.map((item) =>
         item.id === id
           ? {
-              ...item,
-              [attribute]: newValue
-            }
+            ...item,
+            [attribute]: newValue
+          }
           : item
       )
     );
 
   };
-const deleteTask = (id) => {
-  setTask(
-    task.filter((item) => item.id !== id)
-  );
-};
+  const deleteTask = (id) => {
+    setTask(
+      task.filter((item) => item.id !== id)
+    );
+  };
 
 
 
@@ -116,7 +107,7 @@ const deleteTask = (id) => {
 
         editTitle={editTitle}
         setEditTitle={setEditTitle}
-        deleteTask = {deleteTask}
+        deleteTask={deleteTask}
       />
 
     </div>
