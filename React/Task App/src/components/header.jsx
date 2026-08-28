@@ -1,9 +1,25 @@
-function Header(){
-    return (
-        <header>
-            <h1>Task Management App</h1>
-            <p>Welcome to your task management app!</p>
-        </header>
-    );
+import { NavLink } from "react-router-dom";
+
+function Header() {
+  return (
+    <header>
+      <h1>Task Manager</h1>
+      <nav>
+        <NavLink 
+          to="/" 
+          className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+        >
+          Home
+        </NavLink>
+        <NavLink 
+          to="/about" 
+          className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+        >
+          About
+        </NavLink>
+      </nav>
+    </header>
+  );
 }
+
 export default Header;
