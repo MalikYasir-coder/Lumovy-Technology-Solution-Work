@@ -4,6 +4,9 @@ function Header() {
   return (
     <header>
       <h1>Task Manager</h1>
+      <p className="header-subtitle">
+  Manage your tasks efficiently
+</p>
       <nav>
         <NavLink 
           to="/" 

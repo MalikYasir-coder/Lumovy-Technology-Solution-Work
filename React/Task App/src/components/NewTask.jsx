@@ -1,21 +1,26 @@
-function NewTask({
-  title,
-  setTitle,
-  category,
-  setCategory,
-  priority,
-  setPriority,
-  date,
-  setDate,
-  addTask,
-  tasks,
-  updateTask,
-  editingId,
-  setEditingId,
-  editTitle,
-  setEditTitle,
-  deleteTask
-}) {
+import { useContext } from "react";
+import { TaskContext } from "../Context/TaskContext";
+
+function NewTask() {
+  const {
+    title,
+    setTitle,
+    category,
+    setCategory,
+    priority,
+    setPriority,
+    date,
+    setDate,
+    addTask,
+    task,
+    updateTask,
+    editingId,
+    setEditingId,
+    editTitle,
+    setEditTitle,
+    deleteTask,
+  } = useContext(TaskContext);
+
   return (
     <div className="task-container">
 
@@ -74,7 +79,6 @@ function NewTask({
         </button>
       </div>
 
-
       {/* ================= TASK FILTERS ================= */}
       <div className="filter-container">
         <h2>Task Filters</h2>
@@ -82,13 +86,13 @@ function NewTask({
         <div className="filter-buttons">
 
           <button>
-            All ({tasks.length})
+            All ({task.length})
           </button>
 
           <button>
             Pending (
             {
-              tasks.filter(
+              task.filter(
                 (task) => task.status === "pending"
               ).length
             }
@@ -98,7 +102,7 @@ function NewTask({
           <button>
             Completed (
             {
-              tasks.filter(
+              task.filter(
                 (task) => task.status === "completed"
               ).length
             }
@@ -108,15 +112,13 @@ function NewTask({
         </div>
       </div>
 
-
       {/* ================= TASKS ================= */}
       <div className="tasks-container">
 
         <h2>Tasks</h2>
 
-        {tasks.length === 0 ? (
+        {task.length === 0 ? (
 
-          /* NO TASKS */
           <div className="no-tasks">
             <h3>No Tasks Found</h3>
             <p>
@@ -126,10 +128,9 @@ function NewTask({
 
         ) : (
 
-          /* TASK LIST */
           <div className="task-list">
 
-            {tasks.map((task) => (
+            {task.map((task) => (
 
               <div
                 className="task-card"
@@ -140,7 +141,6 @@ function NewTask({
                 {editingId === task.id ? (
 
                   <>
-                    {/* Edit Title */}
                     <input
                       type="text"
                       className="form-input"
@@ -150,8 +150,6 @@ function NewTask({
                       }
                     />
 
-
-                    {/* Edit Category */}
                     <select
                       className="form-input"
                       value={task.category}
@@ -163,21 +161,11 @@ function NewTask({
                         )
                       }
                     >
-                      <option value="work">
-                        Work
-                      </option>
-
-                      <option value="personal">
-                        Personal
-                      </option>
-
-                      <option value="study">
-                        Study
-                      </option>
+                      <option value="work">Work</option>
+                      <option value="personal">Personal</option>
+                      <option value="study">Study</option>
                     </select>
 
-
-                    {/* Edit Priority */}
                     <select
                       className="form-input"
                       value={task.priority}
@@ -189,21 +177,11 @@ function NewTask({
                         )
                       }
                     >
-                      <option value="low">
-                        Low
-                      </option>
-
-                      <option value="medium">
-                        Medium
-                      </option>
-
-                      <option value="high">
-                        High
-                      </option>
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
                     </select>
 
-
-                    {/* Edit Date */}
                     <input
                       type="date"
                       className="form-input"
@@ -217,12 +195,9 @@ function NewTask({
                       }
                     />
 
-
-                    {/* Save */}
                     <button
                       className="Update-button"
                       onClick={() => {
-
                         updateTask(
                           task.id,
                           "title",
@@ -231,19 +206,16 @@ function NewTask({
 
                         setEditingId(null);
                         setEditTitle("");
-
                       }}
                     >
                       Save
                     </button>
-
                   </>
 
                 ) : (
 
                   /* ================= NORMAL MODE ================= */
                   <>
-
                     <h3>{task.title}</h3>
 
                     <p>
@@ -262,22 +234,16 @@ function NewTask({
                       Status: {task.status}
                     </p>
 
-
-                    {/* Update Button */}
                     <button
                       className="Update-button"
                       onClick={() => {
-
                         setEditingId(task.id);
                         setEditTitle(task.title);
-
                       }}
                     >
                       Update Task
                     </button>
 
-
-                    {/* Delete Button */}
                     <button
                       className="Delete-button"
                       onClick={() => {
@@ -286,21 +252,16 @@ function NewTask({
                     >
                       Delete Task
                     </button>
-
                   </>
-
                 )}
 
               </div>
-
             ))}
 
           </div>
-
         )}
 
       </div>
-
     </div>
   );
 }
