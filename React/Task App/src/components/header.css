@@ -5,6 +5,13 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.app-shell {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  color: #1e293b;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
 header h1 {
   margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
@@ -41,6 +48,111 @@ nav {
   background-color: white;
   color: #0369a1;
   font-weight: 700;
+}
+
+.theme-toggle {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #0369a1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0369a1;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: #0369a1;
+  color: #ffffff;
+}
+
+.theme-toggle:active {
+  transform: scale(0.97);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* The class is added by AppLayout from the Redux darkMode value. */
+.app-shell.dark-theme {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.app-shell.dark-theme header {
+  background-color: #1e293b;
+}
+
+.app-shell.dark-theme header h1,
+.app-shell.dark-theme header p,
+.app-shell.dark-theme .nav-link {
+  color: #e2e8f0;
+}
+
+.app-shell.dark-theme .nav-link:hover {
+  background-color: #334155;
+}
+
+.app-shell.dark-theme .nav-link.active {
+  background-color: #0f172a;
+  color: #7dd3fc;
+}
+
+.app-shell.dark-theme .theme-toggle {
+  border-color: #7dd3fc;
+  background-color: #334155;
+  color: #e0f2fe;
+}
+
+.app-shell.dark-theme .theme-toggle:hover {
+  background-color: #7dd3fc;
+  color: #0f172a;
+}
+
+.app-shell.dark-theme .task-form-card,
+.app-shell.dark-theme .filter-container,
+.app-shell.dark-theme .task-card,
+.app-shell.dark-theme .no-tasks,
+.app-shell.dark-theme .service-card {
+  background-color: #1e293b;
+  border-color: #475569;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.app-shell.dark-theme .task-form-card h2,
+.app-shell.dark-theme .filter-container h2,
+.app-shell.dark-theme .tasks-container h2,
+.app-shell.dark-theme .task-card h3,
+.app-shell.dark-theme .no-tasks h3,
+.app-shell.dark-theme .service-card h3,
+.app-shell.dark-theme .about-hero h1,
+.app-shell.dark-theme .notfound-page h2 {
+  color: #f8fafc;
+}
+
+.app-shell.dark-theme .task-card p,
+.app-shell.dark-theme .service-card p,
+.app-shell.dark-theme .about-section p,
+.app-shell.dark-theme .about-tagline,
+.app-shell.dark-theme .notfound-page p,
+.app-shell.dark-theme .no-tasks p {
+  color: #cbd5e1;
+}
+
+.app-shell.dark-theme .form-input,
+.app-shell.dark-theme .filter-buttons button {
+  background-color: #0f172a;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.app-shell.dark-theme .filter-buttons button:hover {
+  background-color: #334155;
+  border-color: #7dd3fc;
 }
 
 /* ===== About Page ===== */
