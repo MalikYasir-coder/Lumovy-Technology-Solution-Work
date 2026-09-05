@@ -12,6 +12,30 @@ function TaskProvider({ children }) {
     localStorage.setItem("tasks", JSON.stringify(task));
   }, [task]);
 
+  // API functions belong here because TaskContext owns the task data.
+  // This function is NOT called yet, so it will not make any API request.
+  const getTasksFromApi = async () => {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+    );
+
+    if (!response.ok) {
+      throw new Error("Tasks could not be loaded");
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+
+    // Later, when you want API tasks on the screen, add this line:
+    setTask(data);
+  };
+
+  // Later, this useEffect will call the GET function when the app opens:
+  useEffect(() => {
+    getTasksFromApi();
+  }, []);
+
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("");
@@ -60,6 +84,7 @@ function TaskProvider({ children }) {
   const value = {
     task,
     setTask,
+    getTasksFromApi,
 
     title,
     setTitle,
