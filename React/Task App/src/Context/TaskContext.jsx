@@ -56,7 +56,7 @@ function TaskProvider({ children }) {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/todos/${taskId}`,
       {
-        method: "DELETE",
+      method: "DELETE",
       }
     );
 
