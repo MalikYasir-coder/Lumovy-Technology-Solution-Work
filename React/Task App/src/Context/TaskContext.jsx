@@ -65,6 +65,26 @@ function TaskProvider({ children }) {
     }
   };
 
+  // PATCH: update only the changed field of one task.
+  const updateTaskFromApi = async (taskId, changes) => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${taskId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(changes),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Task could not be updated");
+    }
+
+    return response.json();
+  };
+
   // Later, this useEffect will call the GET function when the app opens:
   useEffect(() => {
     getTasksFromApi();
@@ -107,14 +127,20 @@ function TaskProvider({ children }) {
     }
   };
 
-  const updateTask = (id, attribute, newValue) => {
-    setTask(
-      task.map((item) =>
-        item.id === id
-          ? { ...item, [attribute]: newValue }
-          : item
-      )
-    );
+  const updateTask = async (id, attribute, newValue) => {
+    try {
+      const updatedTask = await updateTaskFromApi(id, {
+        [attribute]: newValue,
+      });
+
+      setTask((currentTasks) =>
+        currentTasks.map((item) =>
+          item.id === id ? { ...item, ...updatedTask } : item
+        )
+      );
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const deleteTask = async (id) => {
