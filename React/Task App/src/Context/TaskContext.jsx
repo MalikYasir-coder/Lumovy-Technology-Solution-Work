@@ -85,6 +85,26 @@ function TaskProvider({ children }) {
     return response.json();
   };
 
+  // PUT: send a complete replacement version of one task.
+  const replaceTaskWithApi = async (updatedTask) => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${updatedTask.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTask),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Task could not be replaced");
+    }
+
+    return response.json();
+  };
+
   // Later, this useEffect will call the GET function when the app opens:
   useEffect(() => {
     getTasksFromApi();
@@ -143,6 +163,20 @@ function TaskProvider({ children }) {
     }
   };
 
+  const replaceTask = async (updatedTask) => {
+    try {
+      const replacedTask = await replaceTaskWithApi(updatedTask);
+
+      setTask((currentTasks) =>
+        currentTasks.map((item) =>
+          item.id === updatedTask.id ? { ...item, ...replacedTask } : item
+        )
+      );
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   const deleteTask = async (id) => {
     try {
       await deleteTaskFromApi(id);
@@ -180,6 +214,7 @@ function TaskProvider({ children }) {
 
     addTask,
     updateTask,
+    replaceTask,
     deleteTask,
   };
 

@@ -14,6 +14,7 @@ function NewTask() {
     addTask,
     task,
     updateTask,
+    replaceTask,
     editingId,
     setEditingId,
     editTitle,
@@ -198,11 +199,10 @@ function NewTask() {
                     <button
                       className="Update-button"
                       onClick={() => {
-                        updateTask(
-                          task.id,
-                          "title",
-                          editTitle
-                        );
+                        replaceTask({
+                          ...task,
+                          title: editTitle,
+                        });
 
                         setEditingId(null);
                         setEditTitle("");
