@@ -5,13 +5,16 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/store";
 import TaskProvider from "./Context/TaskContext";
 import App from "./App";
+import { StrictMode } from "react";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <TaskProvider>
-        <App />
-      </TaskProvider>
-    </Provider>
-  </BrowserRouter>
+  <StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <TaskProvider>
+          <App />
+        </TaskProvider>
+      </Provider>
+    </BrowserRouter>
+  </StrictMode>
 );
